@@ -2,12 +2,12 @@ from collectables import Collectables
 from collectables import Collectable_Crab
 
 class Item_List():
-    j_gravestone = Collectables("J Gravstone", 239, 239, 0, 128, 50)
-    blood_bush = Collectables("Blood Bush", 0, 120, 0, 160, 50)
-    skull = Collectables("Skull", 144, 200, 0, 144, 50)
-    head = Collectables("Head", 104, 240, 16, 144, 50)
-    knife = Collectables("Knife", 96, 168, 32, 144, 50)
-    teddy_bear = Collectables("Teddy Bear", 24, 216, 0, 176, 50)
+    j_gravestone = Collectables("J Gravstone", 239, 239, 0, 128, 50, sound=63)
+    blood_bush = Collectables("Blood Bush", 0, 120, 0, 160, 50, sound=63)
+    skull = Collectables("Skull", 144, 200, 0, 144, 50, sound=63)
+    head = Collectables("Head", 104, 240, 16, 144, 50, sound=63)
+    knife = Collectables("Knife", 96, 168, 32, 144, 50, sound=63)
+    teddy_bear = Collectables("Teddy Bear", 24, 216, 0, 176, 50, sound=63)
     cool_land_crab = Collectable_Crab(32, 208, 232, 240, "Cool Land Crab", 8, 8, 25)
     cool_water_crab = Collectable_Crab(32, 216, 8, 168, "Cool Water Crab", 8, 8, 25)
     cool_shell_crab = Collectable_Crab(48, 224, 184, 176, "Cool Shell Crab", 8, 16, 25)

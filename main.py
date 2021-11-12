@@ -1,6 +1,6 @@
-from pyxel.editor.app import App
+# from pyxel.editor.app import App
 
-App("Eye_Spy")
+# App("Eye_Spy")
 
 
 import pyxel
@@ -18,7 +18,6 @@ from crabs import Crabs
 
 
 
-
 class App:
     width = 256
     height = 256
@@ -31,6 +30,8 @@ class App:
     update_dict = {}
     crabs = []
     update_funct = None
+    mytime = 0
+    oldtime = 0
     #The maximum width and height of the screen is 255
     palette = [
         # 0xffa500
@@ -80,7 +81,8 @@ class App:
         self.update_funct = self.update_dict.get("start_screen")
 
 
-        self.bg.change_to_glitch_screen_1()
+        # self.bg.change_to_glitch_screen_1()
+        self.bg.change_to_start_screen()
 
         self.cursor.toggleDraw()
 
@@ -107,9 +109,11 @@ class App:
     def change_level_update(self):
         if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
             if self.choose_button("exit", 240, 0, 16, 16):
-                self.bg.change_to_start_screen()
+                self.bg.change_to_start_screen_scary()
                 self.update_funct = self.update_dict.get("start_screen")
                 self.glitch_initiation = True
+                pyxel.play(1, 19, loop=False)
+                pyxel.play(2, 20, loop=False)
 
             if self.choose_button("crab_rave_level", 192, 232, 16, 16):
                 self.bg.change_to_crab_rave_load()
@@ -225,10 +229,29 @@ class App:
     def start_screen_update(self):
         if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
             if self.choose_button("exit", 0, 192, 56, 32):
-                pyxel.quit()
-            if self.choose_button("start", 0, 114, 56, 32):
+                if self.glitch_initiation == True:
+                    self.bg.change_to_glitch_screen_1()
+                    self.update_funct = self.glitch_screen_update
+                    pyxel.playm(2, loop=True)
+                    self.oldtime = time.clock_gettime_ns(time.CLOCK_REALTIME)
+                    
+                else:
+                    pyxel.quit()
+            if self.choose_button("start", 0, 114, 56, 32) and self.glitch_initiation == False:
                 self.bg.change_to_level_select()
                 self.update_funct = self.update_dict.get("change_level")
+                pyxel.play(1, 17, loop=False)
+                pyxel.play(2, 18, loop=False)
+            elif self.glitch_initiation == True:
+                pyxel.play(1, 0, loop=False)
+ 
+                
+    def glitch_screen_update(self):
+        self.bg.glitch_screen_animation()
+        if self.oldtime+10000000000 < time.clock_gettime_ns(time.CLOCK_REALTIME):
+            pyxel.stop()
+            self.bg.change_to_j_level_load()
+            self.update_funct = self.update_dict.get("j_level_load")
 
 
         

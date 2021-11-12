@@ -1,4 +1,5 @@
 import pyxel
+import time
 
 class Crabs:
     width = 0

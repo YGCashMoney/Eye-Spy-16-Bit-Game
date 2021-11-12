@@ -65,6 +65,13 @@ class BG:
         self.width = 32
         self.height = 32
 
+  def change_to_start_screen_scary(self):
+        self.tilemap = 0
+        self.u = 48
+        self.v = 96
+        self.width = 32
+        self.height = 32
+
   def change_to_car_mountain_level(self):
       self.tilemap = 0
       self.u = 96
@@ -85,6 +92,8 @@ class BG:
         self.v = 192
         self.width = 32
         self.height = 32
+
+
 
   def glitch_screen_animation(self):
       self.u = self.u+48
