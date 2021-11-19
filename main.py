@@ -211,10 +211,20 @@ class App:
                 self.cursor.toggleDraw()
                 
     def car_mountain_level_update(self):
-        self.bg.change_to_car_mountain_level()
-        self.items = Item_List.car_mountain_level_list
         self.magglass.update()
-
+        center = self.magglass.getCenter()
+        if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+            for item in self.items:
+                if item.update(center[0], center[1], self.magglass.margin):
+                    self.items.remove(item)
+            if self.choose_button("level_return", 0, 40, 40, 16, center):
+                pyxel.stop()
+                self.crabs = []
+                self.items = []
+                self.update_funct = self.update_dict.get("change_level")
+                self.bg.change_to_level_select()
+                self.magglass.toggleDraw()
+                self.cursor.toggleDraw()
     def car_mountain_level_load_update(self):
         if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
             self.cursor.toggleDraw()
@@ -222,7 +232,6 @@ class App:
             self.bg.change_to_car_mountain_level()
             self.items = Item_List.car_mountain_level_list
             self.update_funct = self.update_dict.get("car_mountain_level")
-
 
 
 
