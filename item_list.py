@@ -15,10 +15,10 @@ class Item_List():
     message_in_bottle = Collectables("Message in Bottle", 40, 192, 40, 208, 25)
     nautillis_shell = Collectables("Nautillis Shell", 88, 152, 24, 224, 25)
     snowboarder = Collectables("Snowboarder", 40, 88, 24, 168, 10, 8, 8)
-    flag = Collectables("Flag", 176, 8, 16, 160, 10, 8, 16)
-    bush_with_bunny = Collectables("Bunny Bush", 216, 96, 32, 192, 10)
+    flag = Collectables("Flag", 176, 8, 16, 160, 8, 8, 16)
+    bush_with_bunny = Collectables("Bunny Bush", 216, 96, 32, 192, 8)
     gear_shift_drive = Collectables("Drive Mode", 208, 240, 32, 176, 10, 8, 16)
-    money_bag = Collectables("Shady Money Bag", 192, 48, 16, 178, 15, 16, 30)
+    money_bag = Collectables("Shady Money Bag", 192, 48, 16, 178, 20, 16, 30)
     toyota_logo = Collectables("Toyota Logo", 72, 168, 56, 160, 15, 24, 24)
 
     

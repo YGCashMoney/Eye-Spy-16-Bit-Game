@@ -93,6 +93,13 @@ class BG:
         self.width = 32
         self.height = 32
 
+  def change_to_shop(self):
+        self.tilemap = 0
+        self.u = 0
+        self.v = 48
+        self.width = 32
+        self.height = 32
+
 
 
   def glitch_screen_animation(self):

@@ -41,7 +41,7 @@ class App:
         0xFF848C, 0x693F28
     ]  # 0 - 15
 
-    glitch_initiation =  False
+    glitch_initiation = False
 
     def __init__(self):
         pyxel.init(
@@ -105,6 +105,12 @@ class App:
                 if center[1] >= y and center[1] <= y + height:
                     return True
             return False
+
+    def shop_update(self):
+        if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+            if self.choose_button("return", 240, 0, 16, 16):
+                self.bg.change_to_level_select()
+                self.update_funct = self.update.dict.get("shop_update")
         
     def change_level_update(self):
         if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
@@ -114,6 +120,13 @@ class App:
                 self.glitch_initiation = True
                 pyxel.play(1, 19, loop=False)
                 pyxel.play(2, 20, loop=False)
+
+            if self.choose_button("shop", 0, 0, 32, 32):
+                self.bg.change_to_shop()
+                pyxel.play(1, 17, loop=False)
+                pyxel.play(2, 18, loop=False)
+
+
 
             if self.choose_button("crab_rave_level", 192, 232, 16, 16):
                 self.bg.change_to_crab_rave_load()
