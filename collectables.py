@@ -1,5 +1,6 @@
 import pyxel
 from crabs import Crabs
+from player import Player
 
 class Collectables:
   drawItem = True
@@ -36,7 +37,8 @@ class Collectables:
         if self.body[1] >= magY - margin and self.body[1] <= magY + margin:
             self.u = 0
             self.v = 240
-            print ("Congrats! You found " + self.name + "!!!")
+            Player.point = Player.point+self.value
+            print ("Congrats! You found " + self.name + "!!! Now you have a total of " + str(Player.point) + " point!")
             pyxel.play(2, self.sound, loop=False)
             return True
     return False
@@ -46,10 +48,15 @@ class Collectables:
 
        else:
           self.drawItem = False
-  def draw(self):
+  def draw(self, update_funct, update_dict):
 
+    
       if self.drawItem == True:
-          pyxel.blt(self.xpos, self.ypos, self.image, self.u, self.v, self.width, self.height, 11)
+          greenscreen_color = 11
+          if update_funct == update_dict ["beautiful_nature_level"]:
+            greenscreen_color = 4
+          pyxel.blt(self.xpos, self.ypos, self.image, self.u, self.v, self.width, self.height, greenscreen_color)
+          
 
 
 
@@ -68,5 +75,5 @@ class Collectable_Crab(Crabs, Collectables):
     def toggleDraw(self):
         Collectables.toggleDraw(self)
 
-    def draw(self):
-        Collectables.draw(self)
+    def draw(self, update_funct, update_dict):
+        Collectables.draw(self, update_funct, update_dict)

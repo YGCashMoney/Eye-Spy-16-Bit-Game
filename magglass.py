@@ -105,10 +105,10 @@ class MagGlass:
         
         #this clip works by selecting the region from the first coordinates, aka our mouse position to where we say is the next coordiantes.
         if self.drawMag == True:
-
        #this is what draws the magnifying glass, but now we need to have different u and v values for each of the glasses we want to draw. as well as height and width....
             pyxel.blt(self.xpos, self.ypos, 2, self.u, self.v, self.width+48, self.height+48, 11)
             pyxel.clip(self.xpos+24,self.ypos+24, self.width, self.height)
+
         #the last value in this function, is which of the color pallete will be the transparent color.... in this case 0 means the first color in the pallete which is black...
         else:
             pyxel.clip(0,0,300, 300)

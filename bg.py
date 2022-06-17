@@ -1,14 +1,49 @@
 import pyxel
+from enum import Enum
+
+class levels (Enum):
+  magglass = 0
+  start_screen = 1
+  level_select = 2
+  start_scary = 3
+  shop = 4
+  crab_load = 5
+  level_load = 6
+  j_level = 7
+  crab_level = 8
+  car_level = 9
+  good_nature = 10
+  iceberg_level = 11
+  glitch_1 = 12
+  j_load = 13
+
 
 class BG:
   name = ""
-  width = 0
-  height = 0
+  width = 32
+  height = 32
   xpos = 0 
-  ypos = 0 
+  ypos = 0
   u = 0 
   v = 0 
   tilemap = 0
+
+  dictionary = {
+        levels.magglass: (0, 0, 48),
+        levels.start_screen: (0, 0, 96),
+        levels.level_select: (0, 48, 48),
+        levels.start_scary: (0, 48, 96),
+        levels.shop: (0, 0, 48),
+        levels.crab_load: (0, 144, 48),
+        levels.level_load: (0, 96, 48),
+        levels.j_level: (0, 0, 0),
+        levels.crab_level: (0, 48, 0),
+        levels.car_level: (0, 96, 0),
+        levels.good_nature: (0, 96, 96),
+        levels.iceberg_level: (0, 192, 0),
+        levels.glitch_1: (0, 0, 192),
+        levels.j_load: (0, 192, 48)
+  }
 
   def __init__(self,level):
     print("Creation of the BackGround")
@@ -16,84 +51,8 @@ class BG:
   def update(self):
     print("update of the background")
 
-  def change_mag_screen(self):
-      self.tilemap = 0
-      self.u = 0
-      self.v = 48
-      self.width = 32
-      self.height = 32
-
-  def change_to_crab_rave(self):
-        self.tilemap = 0
-        self.u = 48
-        self.v = 0
-        self.width = 32
-        self.height = 32
-
-  def change_to_crab_rave_load(self):
-        self.tilemap = 0
-        self.u = 144
-        self.v = 48
-        self.width = 32
-        self.height = 32
-
-  def change_to_j_level(self):
-        self.tilemap = 0
-        self.u = 0
-        self.v = 0
-        self.width = 32
-        self.height = 32
-    
-  def change_to_j_level_load(self):
-        self.tilemap = 0
-        self.u = 192
-        self.v = 48
-        self.width = 32
-        self.height = 32
-
-  def change_to_level_select(self):
-        self.tilemap = 0
-        self.u = 48
-        self.v = 48
-        self.width = 32
-        self.height = 32
-
-  def change_to_start_screen(self):
-        self.tilemap = 0
-        self.u = 0
-        self.v = 96
-        self.width = 32
-        self.height = 32
-
-  def change_to_start_screen_scary(self):
-        self.tilemap = 0
-        self.u = 48
-        self.v = 96
-        self.width = 32
-        self.height = 32
-
-  def change_to_car_mountain_level(self):
-      self.tilemap = 0
-      self.u = 96
-      self.v = 0
-      self.width = 32
-      self.height = 32
-
-  def change_to_level_load(self):
-      self.tilemap = 0
-      self.u = 96
-      self.v = 48
-      self.width = 32
-      self.hight  = 32
-
-  def change_to_glitch_screen_1(self):
-        self.tilemap = 0
-        self.u = 0
-        self.v = 192
-        self.width = 32
-        self.height = 32
-
-
+  def change_screen(self, level):
+      self.tilemap, self.u, self.v = BG.dictionary [level]
 
   def glitch_screen_animation(self):
       self.u = self.u+48
@@ -101,4 +60,5 @@ class BG:
           self.u = 0
 
   def draw(self):
-    pyxel.bltm(0,0,self.tilemap,self.u, self.v,100,100)
+    pyxel.bltm(0,0,self.tilemap,self.u, self.v, 100, 100)
+
