@@ -1,5 +1,5 @@
-# from pyxel.editor.app import App
-# App("Eye_Spy")
+from pyxel.editor.app import App
+App("Eye_Spy")
 
 
 import pyxel
