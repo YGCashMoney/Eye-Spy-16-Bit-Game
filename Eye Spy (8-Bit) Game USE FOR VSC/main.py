@@ -1,5 +1,10 @@
+<<<<<<< HEAD:main.py
 # from pyxel.editor.app import App
 # App("Eye_Spy")
+=======
+from pyxel.editor.app import App
+App("Eye_Spy")
+>>>>>>> 47b79cc08b7740f4c709bd69ce439fde4ae11fcc:Eye Spy (8-Bit) Game USE FOR VSC/main.py
 
 
 import pyxel
@@ -61,14 +66,22 @@ class App:
 
         exit = button("exit", 0, 192, 56, 32, levels.start_screen, self.bg)
         start = button("start", 0, 114, 56, 32, levels.level_select, self.bg)
+<<<<<<< HEAD:main.py
+        return_button = button("return", 240, 0, 16, 16, levels.start_scary, self.bg)
+=======
         return = button("return", 240, 0, 16, 16, levels.start_scary, self.bg)
+>>>>>>> 47b79cc08b7740f4c709bd69ce439fde4ae11fcc:Eye Spy (8-Bit) Game USE FOR VSC/main.py
         shop = ("shop", 0, 0, 32, 32, levels.shop, self.bg)
         crab_rave_level = ("crab_rave_level", 192, 232, 16, 16, levels.crab_level, self.bg)
         j_level = ("j_level", 232, 232, 16, 16, levels.j_level, self.bg)
         car_mountain_level = ("car_mountain_level", 184, 136, 16, 16, levels.car_level, self.bg)
         beautiful_nature_level = ("beautiful_nature_level", 24, 136, 16, 16, levels.good_nature, self.bg)
         iceberg_level = ("iceberg_level", 64, 136, 16, 16, levels.iceberg_level, self.bg)
+<<<<<<< HEAD:main.py
+        level_return = button("level_return", 0, 40, 40, 16, levels.level_select, self.bg)
+=======
         level_return = ("level_return", 0, 40, 40, 16, center, levels.level_select, self.bg)
+>>>>>>> 47b79cc08b7740f4c709bd69ce439fde4ae11fcc:Eye Spy (8-Bit) Game USE FOR VSC/main.py
 
         self.button_dict = {
             levels.magglass:[],
@@ -88,10 +101,17 @@ class App:
             levels.crab_load:[],
             levels.level_load:[],
             levels.j_level:[],
+<<<<<<< HEAD:main.py
+            levels.crab_level:[("level_return", 0, 40, 40, 16)],
+            levels.car_level:[("level_return", 0, 40, 40, 16)],
+            levels.good_nature:[("level_return", 0, 40, 40, 16)],
+            levels.iceberg_level:[("level_return", 0, 40, 40, 16)],
+=======
             levels.crab_level:[("level_return", 0, 40, 40, 16, center)],
             levels.car_level:[("level_return", 0, 40, 40, 16, center)],
             levels.good_nature:[("level_return", 0, 40, 40, 16, center)],
             levels.iceberg_level:[("level_return", 0, 40, 40, 16, center)],
+>>>>>>> 47b79cc08b7740f4c709bd69ce439fde4ae11fcc:Eye Spy (8-Bit) Game USE FOR VSC/main.py
             levels.glitch_1:[],
             levels.j_load:[],
         }
@@ -128,7 +148,19 @@ class App:
         pyxel.run(self.update, self.draw)
 
     #makes buttons functioning
+<<<<<<< HEAD:main.py
+
+    # name, x, y, width, height, center = None
+
+    def choose_button(self,button,center = None):
+        name = button[0]
+        x = button[1]
+        y = button[2]
+        width = [3]
+        height = [4]
+=======
     def choose_button(self, name, x, y, width, height, center = None):
+>>>>>>> 47b79cc08b7740f4c709bd69ce439fde4ae11fcc:Eye Spy (8-Bit) Game USE FOR VSC/main.py
 
     # if self.body[0] >= magX - margin and self.body[0] <= magX + margin:
     #     if self.body[1] >= magY - margin and self.body[1] <= magY + margin:
@@ -380,7 +412,10 @@ class App:
     # start + glitch initiation to j lvl
     def start_screen_update(self):
         if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
-            if self.choose_button("exit", 0, 192, 56, 32):
+                #levels.start_screen:[
+                # ("exit", 0, 192, 56, 32),
+                # ("start", 0, 114, 56, 32)],
+            if self.choose_button(self.button_dict[levels.start_screen][0]):
                 if self.glitch_initiation == True:
                     # Glitch Screen 1
                     self.bg.change_screen(levels.glitch_1)
@@ -390,7 +425,11 @@ class App:
                     
                 else:
                     pyxel.quit()
+<<<<<<< HEAD:main.py
+            if self.choose_button(self.button_dict[levels.start_screen][1]) and self.glitch_initiation == False:
+=======
             if self.choose_button("start", 0, 114, 56, 32) and self.glitch_initiation == False:
+>>>>>>> 47b79cc08b7740f4c709bd69ce439fde4ae11fcc:Eye Spy (8-Bit) Game USE FOR VSC/main.py
                 # self.bg.change_to_level_select()
                 self.bg.change_screen(levels.level_select)
                 self.update_funct = self.update_dict.get("change_level")
